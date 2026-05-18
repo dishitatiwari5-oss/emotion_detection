@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Emotion Detection</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container">
+<h1>Emotion Detection System</h1>
+<form method="POST" action="/">
+    <textarea name="text" placeholder="Enter your sentence"></textarea>
+    <br>
+    <button type="submit">Detect emotion</button>
+</form>
+    <h2>Result: {{ result }}</h2>
+    {% if graph %}
+    <img src="{{ graph }}" alt="Emotion Graph" width="500">
+{% endif %}
+    <h2>Previous Inputs</h2>
+
+<ul>
+{% for item in history %}
+    <li>
+        <b>Text:</b> {{ item.text }}
+        <br>
+        <b>Emotion:</b> {{ item.emotion }}
+    </li>
+    <br>
+{% endfor %}
+</ul>
+
+     </div>
+</body>
+</html>
